@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.player_container {
+	background-color: red;
+	overflow: hidden;
+	border-radius: 8px;
+	position: relative;
+}
+
+.player_container #video_player {
+	position: relative;
+	width: 100%;
+}
+.player_controls {
+	height: 90px;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	z-index: 10;
+	background-color: red;
+}
