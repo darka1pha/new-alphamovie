@@ -26,7 +26,12 @@ const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType }) => {
 					/>
 					<div
 						className={` flex align-middle bg-[#00000065] rounded-md backdrop-blur-lg p-2 absolute z-10 top-2 left-2`}>
-						<img height={16} width={16} src='/icons/Star.svg' />
+						<Image
+							alt='rate-star'
+							height={16}
+							width={16}
+							src='/icons/Star.svg'
+						/>
 						<p className='font-popins text-warning-500 ml-2'>
 							{rate.toFixed(1)}
 						</p>
