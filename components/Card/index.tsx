@@ -22,6 +22,7 @@ const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType }) => {
 						height={410}
 						width={290}
 						src={cover}
+						alt={name}
 					/>
 					<div
 						className={` flex align-middle bg-[#00000065] rounded-md backdrop-blur-lg p-2 absolute z-10 top-2 left-2`}>

@@ -32,7 +32,8 @@ const Title: React.FC<Props> = ({ title, homeStyle, subtitle }) => {
 					placeholder='Search Movie,TV Shows and ....'
 					className='w-full py-[12px] pr-[16px] pl-[56px] rounded-lg bg-[#00000020] border-[#323b54] border-solid border-[1px] placeholder-[#323b54] focus:outline-none caret-primary-200 text-primary-300 focus:border-primary-300 transition ease-in-out'
 				/>
-				<img
+				<Image
+					alt='search-icon'
 					className='absolute top-0 bottom-0 my-auto left-4'
 					src='/icons/Search.svg'
 					height={24}
