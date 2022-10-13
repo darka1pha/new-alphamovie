@@ -2,9 +2,9 @@ import { CardsContainer, Menu, Title } from '@components'
 import { useGetTrendings } from 'API/hooks/homePage'
 import Head from 'next/head'
 
-const Home = () => {
+const Tvshows = () => {
 	const { data, isLoading, fetchNextPage, isFetchingNextPage, hasNextPage } =
-		useGetTrendings({ media_type: 'all' })
+		useGetTrendings({ media_type: 'tv' })
 	return (
 		<div className='flex flex-col flex-wrap'>
 			<Head>
@@ -13,18 +13,14 @@ const Home = () => {
 					name='description'
 					content='آلفا مووی, مشاهده امتیاز و جزئیات فیلم ها و سریالها'
 				/>
-				<meta property='og:url' content='https://alphamovies.ir' />
+				<meta property='og:url' content='https://alphamovies.ir/tvshows' />
 				<meta
 					name='keywords'
 					content='alpha, alphamovies, alphamovie, alpha movies, movies, series, tv shows, shows, الفا موی, آلفا مووی, فیلم, دانلود فیلم, دانلود سریال, نقد و بررسی فیلم, نقد و بررسی فیلم و سریال'
 				/>
 				<meta property='og:type' content='website' />
 			</Head>
-			<Title
-				homeStyle
-				title='AlphaMovie'
-				subtitle='List of Movies and TV Shows, Explore and Pick One to Watch.'
-			/>
+			<Title title='TV Shows' />
 			<Menu />
 			<CardsContainer
 				fetchNextPage={fetchNextPage}
@@ -37,4 +33,4 @@ const Home = () => {
 	)
 }
 
-export default Home
+export default Tvshows
