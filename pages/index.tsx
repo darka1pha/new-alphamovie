@@ -6,7 +6,7 @@ const Home = () => {
 	const { data, isLoading, fetchNextPage, isFetchingNextPage, hasNextPage } =
 		useGetTrendings({ media_type: 'all' })
 	return (
-		<div className='flex flex-col flex-wrap'>
+		<div lang='en' className='flex flex-col flex-wrap'>
 			<Head>
 				<title>Alpha Movies | آلفا موویز</title>
 				<meta

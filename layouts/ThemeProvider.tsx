@@ -8,7 +8,7 @@ interface Props {
 
 const ThemeProvider: NextPage<Props> = (props) => {
 	return (
-		<div lang='en' className="overflow-x-hidden flex justify-center w-full bg-cover bg-no-repeat bg-primary-900 bg-[url('/assets/background.webp')]">
+		<div className="overflow-x-hidden flex justify-center w-full bg-cover bg-no-repeat bg-primary-900 bg-[url('/assets/background.webp')]">
 			<div className='max-w-[1920px] overflow-y-hidden w-full min-h-screen'>
 				<Navbar />
 				<div className='h-full w-full px-4 sm:px-12  md:px-18 lg:px-24 overflow-x-hidden pt-10'>
