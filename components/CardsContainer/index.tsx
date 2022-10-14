@@ -40,18 +40,21 @@ const CardsContainer: React.FC<Props> = forwardRef(
 												vote_average,
 												media_type,
 												id,
+												adult,
 											},
 											key
-										) => (
-											<Card
-												key={key}
-												name={name ?? original_title}
-												cover={IMAGES_BASE_URL + poster_path}
-												rate={vote_average}
-												id={id}
-												mediaType={media_type.toUpperCase()}
-											/>
-										)
+										) =>
+											media_type !== 'person' && (
+												<Card
+													key={key}
+													name={name ?? original_title}
+													cover={IMAGES_BASE_URL + poster_path}
+													rate={vote_average}
+													id={id}
+													mediaType={media_type}
+													adult={adult}
+												/>
+											)
 									)}
 								</React.Fragment>
 						  ))}
