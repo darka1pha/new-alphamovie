@@ -12,3 +12,7 @@
 	background-color: #483bc3;
 	border-radius: 4px;
 }
+
+* {
+	font-display: optional;
+}

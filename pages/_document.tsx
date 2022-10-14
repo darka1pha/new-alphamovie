@@ -20,10 +20,10 @@ class MyDocument extends Document {
 		return (
 			<Html lang='en'>
 				<Head>
-					<link rel='preconnect' href='https://fonts.googleapis.com' />
+					<link rel='preaload' href='https://fonts.googleapis.com' />
 					<link rel='icon' href='/assets/logo.svg' />
 					<link
-						rel='preconnect'
+						rel='preaload'
 						href='https://fonts.gstatic.com'
 						crossOrigin=''
 					/>
