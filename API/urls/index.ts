@@ -1,8 +1,22 @@
 import { TrendingsParams } from 'API/interfaces'
 
+interface PosterUrl {
+	quality: 'w92' | 'w154' | 'w185' | 'w300' | 'w500' | 'original'
+}
+
+interface BackdropUrl {
+	quality: 'w300' | 'w780' | 'w1280' | 'original'
+}
+
 export const BASE_URL = 'https://api.themoviedb.org/3'
-export const IMAGES_BASE_URL = 'https://image.tmdb.org/t/p/w500'
-export const ORIGINAL_IMAGES_BASE_URL = 'https://image.tmdb.org/t/p/original'
+
+const IMAGES_BASE_URL = 'https://image.tmdb.org/t/p/'
+
+export const POSTER_URL = ({ quality }: PosterUrl) =>
+	`${IMAGES_BASE_URL}${quality}`
+
+export const BACKDROP_URL = ({ quality }: BackdropUrl) =>
+	`${IMAGES_BASE_URL}${quality}`
 
 const API_KEY = '917e390fb30e6e519915e41532377965'
 

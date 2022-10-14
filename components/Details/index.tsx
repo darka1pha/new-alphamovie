@@ -1,4 +1,8 @@
-import { ORIGINAL_IMAGES_BASE_URL } from '@apis/urls'
+import {
+	IMAGES_BASE_URL,
+	ORIGINAL_IMAGES_BASE_URL,
+	POSTER_URL,
+} from '@apis/urls'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -43,7 +47,7 @@ const Details: React.FC<Props> = ({
 		<div className='flex flex-col md:flex-row w-full my-24'>
 			<div className='flex-1 rounded-xl mx-auto overflow-hidden self-baseline w-72 md:max-w-sm'>
 				<Image
-					src={ORIGINAL_IMAGES_BASE_URL + posterImage}
+					src={POSTER_URL({ quality: 'w500' }) + posterImage}
 					layout='responsive'
 					width={411}
 					height={617}

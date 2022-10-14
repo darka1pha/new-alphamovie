@@ -1,4 +1,4 @@
-import { IMAGES_BASE_URL, ORIGINAL_IMAGES_BASE_URL } from '@apis/urls'
+import { BACKDROP_URL } from '@apis/urls'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
@@ -12,12 +12,12 @@ const Cover = ({
 	const router = useRouter()
 	return (
 		<div className='w-full relative'>
-			<div className="relative max-h-[500px] m-auto overflow-hidden rounded-2xl after:content-[''] after:block after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-gradient-to-r from-primary-700/40 to-secondary-700/40">
+			<div className="relative max-h-[580px] m-auto overflow-hidden rounded-2xl after:content-[''] after:block after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-gradient-to-r from-primary-700/40 to-secondary-700/40">
 				<Image
-					src={ORIGINAL_IMAGES_BASE_URL + coverImage}
+					src={BACKDROP_URL({ quality: 'w1280' }) + coverImage}
 					layout='responsive'
-					width={958}
-					height={538}
+					width={1280}
+					height={720}
 					alt={title}
 				/>
 			</div>
