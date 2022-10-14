@@ -3,7 +3,7 @@ import React from 'react'
 interface Props {
 	full?: boolean
 	name: string
-	value: string
+	value: string | number | undefined
 }
 const DetailsItem: React.FC<Props> = ({ full, name, value }) => {
 	return (
