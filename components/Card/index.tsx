@@ -16,13 +16,15 @@ const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType }) => {
 		<Link href={{ pathname: '/[name]', query: { name: 'moviename' } }}>
 			<a
 				className={`flex flex-col bg-primary-300/10 min-w-[300px] max-w-[300px] h-[480px] p-[8px] backdrop-blur-sm rounded-md cursor-pointer group m-4 flex-shrink flex-grow basis-[20%]`}>
-				<div className={`w-full h-[400px] rounded-md overflow-hidden relative`}>
+				<div
+					className={`w-full h-[400px] rounded-md overflow-hidden relative`}>
 					<Image
 						className='group-hover:scale-105 transition ease-in-out'
 						height={410}
 						width={290}
 						src={cover}
 						alt={name}
+						layout='responsive'
 					/>
 					<div
 						className={` flex align-middle bg-[#00000065] rounded-md backdrop-blur-lg p-2 absolute z-10 top-2 left-2`}>
