@@ -7,21 +7,31 @@ interface Props {
 	name: string
 	rate: number
 	id: number
-	mediaType: string
+	mediaType: 'tv' | 'movie'
+	adult?: boolean
 }
 
-const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType }) => {
+const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType, adult }) => {
 	const router = useRouter()
 	return (
-		<Link href={{ pathname: '/[name]', query: { name: 'moviename' } }}>
+		<Link
+			href={{
+				pathname: mediaType
+					? mediaType === 'movie'
+						? '/movies/[id]'
+						: '/tvshows/[id]'
+					: router.pathname.includes('movies')
+					? '/movies/[id]'
+					: '/tvshows/[id]',
+				query: { id },
+			}}>
 			<a
 				className={`flex flex-col bg-primary-300/10 min-w-[300px] max-w-[300px] h-[480px] p-[8px] backdrop-blur-sm rounded-md cursor-pointer group m-4 flex-shrink flex-grow basis-[20%]`}>
-				<div
-					className={`w-full h-[400px] rounded-md overflow-hidden relative`}>
+				<div className={`w-full h-[400px] rounded-md overflow-hidden relative`}>
 					<Image
 						className='group-hover:scale-105 transition ease-in-out'
-						height={410}
-						width={274.7}
+						height={511}
+						width={341}
 						src={cover}
 						alt={name}
 						layout='responsive'
@@ -41,7 +51,17 @@ const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType }) => {
 					{router.pathname === '/' && (
 						<div
 							className={` flex bg-[#00000065] rounded-md backdrop-blur-lg p-2 absolute z-10 top-2 left-20`}>
-							<p className='font-popins text-warning-500'>{mediaType}</p>
+							<p className='font-popins text-warning-500'>
+								{mediaType.toUpperCase()}
+							</p>
+						</div>
+					)}
+					{adult && (
+						<div
+							className={` flex bg-[#00000099] rounded-md backdrop-blur-lg p-2 absolute z-10 top-2 ${
+								mediaType === 'movie' ? 'left-40' : 'left-32'
+							}`}>
+							<p className='font-popins text-[red]'>Adult</p>
 						</div>
 					)}
 				</div>
