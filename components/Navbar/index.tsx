@@ -10,8 +10,8 @@ const Navbar = () => {
 						<Image
 							src='/assets/logo.svg'
 							alt='logo'
-							height='36px'
-							width='36px'
+							height={36}
+							width={36}
 						/>
 					</div>
 				</a>

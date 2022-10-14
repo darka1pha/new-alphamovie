@@ -37,7 +37,7 @@ const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType, adult }) => {
 						layout='responsive'
 					/>
 					<div
-						className={` flex align-middle bg-[#00000065] rounded-md backdrop-blur-lg p-2 absolute z-10 top-2 left-2`}>
+						className={` flex items-center  bg-[#00000065] rounded-md backdrop-blur-lg p-2 absolute z-10 top-2 left-2`}>
 						<Image
 							alt='rate-star'
 							height={16}
