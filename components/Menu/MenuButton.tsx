@@ -14,12 +14,14 @@ const MenuButton: React.FC<{ name: string; active?: boolean }> = ({
 					? '/tvshows'
 					: '/'
 			}>
-			<button
-				className={`min-w-[85px] p-2 ${
-					active ? 'bg-primary-400' : 'bg-none'
-				} font-popins text-primary-50 font-semibold text-xs md:text-base rounded-md hover:bg-primary-500 transition ease-in-out hover:scale-105`}>
-				{name}
-			</button>
+			<a aria-label='menu-links'>
+				<button
+					className={`min-w-[85px] p-2 ${
+						active ? 'bg-primary-500' : 'bg-none'
+					} font-popins text-primary-50 font-semibold text-xs md:text-base rounded-md hover:bg-primary-600 transition ease-in-out hover:scale-105`}>
+					{name}
+				</button>
+			</a>
 		</Link>
 	)
 }
