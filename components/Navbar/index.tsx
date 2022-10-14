@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const Navbar = () => {
 	return (
-		<div className='flex px-28 justify-between align-middle h-[80px] w-full bg-[#12182980]'>
+		<div className='flex px-16 sm:px-28 justify-between align-middle h-[80px] w-full bg-[#12182980]'>
 			<Link href='/'>
 				<a aria-label='home-page' className='flex'>
 					<div className='flex align-middle cursor-pointer'>
