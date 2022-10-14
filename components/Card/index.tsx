@@ -26,8 +26,8 @@ const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType, adult }) => {
 				query: { id },
 			}}>
 			<a
-				className={`flex flex-col bg-primary-300/10 min-w-[300px] max-w-[300px] h-[480px] p-[8px] backdrop-blur-sm rounded-md cursor-pointer group m-4 flex-shrink flex-grow basis-[20%]`}>
-				<div className={`w-full h-[400px] rounded-md overflow-hidden relative`}>
+				className={`flex flex-col bg-primary-300/10 w-[250px] h-[400px] p-[8px] backdrop-blur-sm rounded-md cursor-pointer group m-4`}>
+				<div className={`w-full h-[330px] rounded-md overflow-hidden relative`}>
 					<Image
 						className='group-hover:scale-105 transition ease-in-out'
 						height={450}
