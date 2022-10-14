@@ -1,8 +1,4 @@
-import {
-	IMAGES_BASE_URL,
-	ORIGINAL_IMAGES_BASE_URL,
-	POSTER_URL,
-} from '@apis/urls'
+import { POSTER_URL } from '@apis/urls'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'

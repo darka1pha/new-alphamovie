@@ -1,10 +1,10 @@
 import useReachBottom from '@hooks/useReachBottom'
 import { IPaginatedData, ListResults } from 'API/interfaces'
-import { IMAGES_BASE_URL, POSTER_URL } from 'API/urls'
+import { POSTER_URL } from 'API/urls'
 import Card from 'components/Card'
 import Skeleton from 'components/Card/Skeleton'
 import Loading from 'components/Loading'
-import React, { forwardRef, useRef } from 'react'
+import React, { useRef } from 'react'
 import { InfiniteData } from '@tanstack/react-query'
 
 interface Props {
