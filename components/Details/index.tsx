@@ -16,6 +16,7 @@ interface Props {
 	episodesNumber?: number
 	seasonsNumber?: number
 	posterImage: string | null
+	name: string
 	genres: Array<{
 		name: string
 	}>
@@ -34,6 +35,7 @@ const Details: React.FC<Props> = ({
 	episodesNumber,
 	posterImage,
 	genres,
+	name,
 }) => {
 	const router = useRouter()
 	const isMovie = router.pathname.includes('movie')
@@ -46,15 +48,17 @@ const Details: React.FC<Props> = ({
 					width={411}
 					height={617}
 					className='object-cover h-full w-full'
+					alt={name}
 				/>
 			</div>
 			<div className='flex flex-col flex-1 mt-12  md:pl-20'>
-				<p className='font-popins text-2xl text-[#EBEEF5] font-bold'>
+				<h2 className='font-popins text-2xl text-[#EBEEF5] font-bold'>
 					{tagline}
-				</p>
+				</h2>
+
 				<p className='font-popins text-xl text-[#8E95A9] mt-6'>{overview}</p>
 				<div className='flex max-w-[80px] justify-center align-middle bg-[#00000065] rounded-md backdrop-blur-lg p-2 mt-6'>
-					<img height={16} width={16} src='/icons/Star.svg' />
+					<img alt='rate-icon' height={16} width={16} src='/icons/Star.svg' />
 					<p className='font-popins text-warning-500 ml-2'>{rate.toFixed(1)}</p>
 				</div>
 				<div className='flex flex-wrap'>

@@ -20,7 +20,7 @@ const Home = () => {
 	} = useGetMultiSearch({ query: debouncedSearchValue })
 
 	return (
-		<div lang='en' className='flex flex-col flex-wrap'>
+		<div className='flex flex-col flex-wrap'>
 			<Head>
 				<title>Alpha Movies | آلفا موویز</title>
 				<meta

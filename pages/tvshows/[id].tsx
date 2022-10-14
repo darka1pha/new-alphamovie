@@ -6,6 +6,7 @@ import { Cover, Details } from '@components'
 import { AxiosResponse } from 'axios'
 import CoverSkeleton from 'components/Cover/Skeleton'
 import { GetStaticProps } from 'next'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 
@@ -56,12 +57,33 @@ const Single = () => {
 	const { data, isLoading } = useGetTvDetails({ id: router.query.id })
 	return (
 		<div>
+			<Head>
+				<title>{data ? data.original_name : 'Tv Shows'}</title>
+				<meta
+					name='description'
+					content={
+						data
+							? data.overview
+							: 'آلفا مووی, مشاهده امتیاز و جزئیات فیلم ها و سریالها'
+					}
+				/>
+				<meta
+					property='og:url'
+					content={`https://alphamovies.ir/tvshows/${data?.id}`}
+				/>
+				<meta
+					name='keywords'
+					content='alpha, alphamovies, alphamovie, alpha movies, movies, series, tv shows, shows, الفا موی, آلفا مووی, فیلم, دانلود فیلم, دانلود سریال, نقد و بررسی فیلم, نقد و بررسی فیلم و سریال'
+				/>
+				<meta property='og:type' content='website' />
+			</Head>
 			{isLoading || !data ? (
 				<CoverSkeleton />
 			) : (
 				<>
 					<Cover coverImage={data.backdrop_path} title={data.original_name} />
 					<Details
+						name={data.original_name}
 						genres={data.genres}
 						tagline={data.tagline ? data.tagline : data.original_name}
 						overview={data.overview}

@@ -18,7 +18,7 @@ const MenuButton: React.FC<{ name: string; active?: boolean }> = ({
 				<button
 					className={`min-w-[85px] p-2 ${
 						active ? 'bg-primary-500' : 'bg-none'
-					} font-popins text-primary-50 font-semibold text-xs md:text-base rounded-md hover:bg-primary-600 transition ease-in-out hover:scale-105`}>
+					} font-popins text-primary-50 font-semibold text-xs rounded-md hover:bg-primary-600 transition ease-in-out hover:scale-105`}>
 					{name}
 				</button>
 			</a>

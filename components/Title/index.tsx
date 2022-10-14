@@ -21,22 +21,28 @@ const Title: React.FC<Props> = ({
 }) => {
 	return (
 		<div>
-			<p
-				className={`${
-					homeStyle
-						? 'text-[48px] sm:text-[64px] text-[#EBEEF5] font-semibold'
-						: 'text-[14px] sm:text-[16px] text-[#8E95A9] font-normal'
-				} font-popins`}>
-				{homeStyle ? title : 'AlphaMovie'}
-			</p>
-			<p
-				className={`${
-					!homeStyle
-						? 'text-[48px] sm:text-[64px] text-[#EBEEF5] font-semibold'
-						: 'text-[14px] sm:text-[16px] text-[#8E95A9] font-normal'
-				} font-popins`}>
-				{homeStyle ? subtitle : title}
-			</p>
+			{homeStyle ? (
+				<>
+					<h1
+						className={
+							'text-[48px] sm:text-[64px] text-[#EBEEF5] font-semibold font-popins'
+						}>
+						{title}
+					</h1>
+					<p className='text-[14px] sm:text-[16px] text-[#8E95A9] font-normal font-popins'>
+						{subtitle}
+					</p>
+				</>
+			) : (
+				<>
+					<p className='text-[14px] sm:text-[16px] text-[#8E95A9] font-normal font-popins'>
+						AlphaMovie
+					</p>
+					<h1 className='text-[48px] sm:text-[64px] text-[#EBEEF5] font-semibold font-popins'>
+						{title}
+					</h1>
+				</>
+			)}
 			<div className='max-w-[344px] w-full relative mt-4'>
 				<input
 					onChange={onSearchChanged}

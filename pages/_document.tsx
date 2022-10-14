@@ -21,6 +21,7 @@ class MyDocument extends Document {
 			<Html lang='en'>
 				<Head>
 					<link rel='preconnect' href='https://fonts.googleapis.com' />
+					<link rel='icon' href='/assets/logo.svg' />
 					<link
 						rel='preconnect'
 						href='https://fonts.gstatic.com'

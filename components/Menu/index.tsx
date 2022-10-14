@@ -4,7 +4,7 @@ import MenuButton from './MenuButton'
 const Menu = () => {
 	const router = useRouter()
 	return (
-		<div className='bg-[#00000020] h-[56px] w-full max-w-[360px] sm:w-[360px] p-2 mt-12 rounded-md flex justify-between align-middle'>
+		<div className='bg-[#00000020] h-[56px] w-full  max-w-[360px] p-2 mt-12 rounded-md flex justify-between items-center'>
 			<MenuButton
 				name='All'
 				active={
