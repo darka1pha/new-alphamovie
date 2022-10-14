@@ -30,8 +30,8 @@ const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType, adult }) => {
 				<div className={`w-full h-[400px] rounded-md overflow-hidden relative`}>
 					<Image
 						className='group-hover:scale-105 transition ease-in-out'
-						height={750}
-						width={500}
+						height={450}
+						width={300}
 						src={cover}
 						alt={name}
 						layout='responsive'

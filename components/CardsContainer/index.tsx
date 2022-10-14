@@ -53,7 +53,7 @@ const CardsContainer: React.FC<Props> = ({
 											<Card
 												key={key}
 												name={name ?? original_title}
-												cover={POSTER_URL({ quality: 'w500' }) + poster_path}
+												cover={POSTER_URL({ quality: 'w300' }) + poster_path}
 												rate={vote_average}
 												id={id}
 												mediaType={media_type}
