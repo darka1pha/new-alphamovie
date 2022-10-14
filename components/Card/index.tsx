@@ -21,7 +21,7 @@ const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType }) => {
 					<Image
 						className='group-hover:scale-105 transition ease-in-out'
 						height={410}
-						width={290}
+						width={274.7}
 						src={cover}
 						alt={name}
 						layout='responsive'
