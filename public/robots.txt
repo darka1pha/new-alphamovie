@@ -1,5 +1,4 @@
-# Allow all crawlers
 User-agent: *
-Allow: /
+Allow: /*
 
 Sitemap: http://www.alphamovies.ir/sitemap.xml
