@@ -1,10 +1,25 @@
+import { useGetTvSearch } from '@apis/hooks/tvshows'
 import { CardsContainer, Menu, Title } from '@components'
+import useDebounce from '@hooks/useDebounce'
 import { useGetTrendings } from 'API/hooks/homePage'
 import Head from 'next/head'
+import { useState } from 'react'
 
 const Tvshows = () => {
 	const { data, isLoading, fetchNextPage, isFetchingNextPage, hasNextPage } =
 		useGetTrendings({ media_type: 'tv' })
+
+	const [search, setSearch] = useState('')
+	const debouncedSearchValue = useDebounce(search, 1000)
+
+	const {
+		data: searchData,
+		isLoading: searchLoading,
+		fetchNextPage: fetchNextSearch,
+		isFetchingNextPage: fetchingSearch,
+		hasNextPage: hasNextSearch,
+	} = useGetTvSearch({ query: debouncedSearchValue })
+
 	return (
 		<div lang='en' className='flex flex-col flex-wrap'>
 			<Head>
@@ -20,14 +35,24 @@ const Tvshows = () => {
 				/>
 				<meta property='og:type' content='website' />
 			</Head>
-			<Title title='TV Shows' />
+			<Title
+				searching={searchLoading && !!debouncedSearchValue}
+				onClear={() => {
+					setSearch('')
+				}}
+				onSearchChanged={(e) => {
+					setSearch(e.target.value)
+				}}
+				search={search}
+				title='Tv Shows'
+			/>
 			<Menu />
 			<CardsContainer
-				fetchNextPage={fetchNextPage}
-				fetchingNextPage={isFetchingNextPage}
-				hasNextPage={hasNextPage}
-				data={data}
-				loading={isLoading}
+				fetchNextPage={searchData ? fetchNextSearch : fetchNextPage}
+				fetchingNextPage={searchData ? fetchingSearch : isFetchingNextPage}
+				hasNextPage={searchData ? hasNextSearch : hasNextPage}
+				data={searchData ?? data}
+				loading={searchData ? searchLoading : isLoading}
 			/>
 		</div>
 	)
