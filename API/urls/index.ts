@@ -24,7 +24,7 @@ const urlGenerator = (url: string, page?: number | undefined) =>
 	page ? `${url}?api_key=${API_KEY}&page=${page}` : `${url}?api_key=${API_KEY}`
 
 export const TRENDINGS = ({ media_type = 'all', pageParam }: TrendingsParams) =>
-	`${urlGenerator(`/trending/${media_type}/day`, pageParam)}&query=lord`
+	`${urlGenerator(`/trending/${media_type}/day`, pageParam)}`
 
 export const MOVIE_DETAILS = (id: string | string[] | undefined) =>
 	urlGenerator(`/movie/${id}`)
