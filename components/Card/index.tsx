@@ -7,7 +7,7 @@ interface Props {
 	name: string
 	rate: number
 	id: number
-	mediaType: 'tv' | 'movie'
+	mediaType?: 'tv' | 'movie'
 	adult?: boolean
 }
 
@@ -26,7 +26,7 @@ const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType, adult }) => {
 				query: { id },
 			}}>
 			<a
-				className={`flex flex-col bg-primary-300/10 w-[250px] h-[400px] p-[8px] backdrop-blur-sm rounded-md cursor-pointer group m-4`}>
+				className={`flex flex-col bg-primary-800/40  w-[250px] h-[400px] p-[8px] rounded-md cursor-pointer group m-4`}>
 				<div className={`w-full h-[330px] rounded-md overflow-hidden relative`}>
 					<Image
 						className='group-hover:scale-105 transition ease-in-out'
@@ -37,7 +37,7 @@ const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType, adult }) => {
 						layout='responsive'
 					/>
 					<div
-						className={` flex items-center  bg-[#00000065] rounded-md backdrop-blur-lg p-2 absolute z-10 top-2 left-2`}>
+						className={` flex items-center  bg-[#00000065] rounded-md backdrop-blur-lg p-2 absolute top-2 left-2`}>
 						<Image
 							alt='rate-star'
 							height={16}
@@ -48,9 +48,9 @@ const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType, adult }) => {
 							{rate.toFixed(1)}
 						</p>
 					</div>
-					{router.pathname === '/' && (
+					{mediaType && (
 						<div
-							className={` flex bg-[#00000065] rounded-md backdrop-blur-lg p-2 absolute z-10 top-2 left-20`}>
+							className={` flex bg-[#00000065] rounded-md backdrop-blur-lg p-2 absolute top-2 left-20`}>
 							<p className='font-popins text-warning-500'>
 								{mediaType.toUpperCase()}
 							</p>
@@ -58,7 +58,7 @@ const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType, adult }) => {
 					)}
 					{adult && (
 						<div
-							className={` flex bg-[#00000099] rounded-md backdrop-blur-lg p-2 absolute z-10 top-2 ${
+							className={` flex bg-[#00000099] rounded-md backdrop-blur-lg p-2 absolute top-2 ${
 								mediaType === 'movie' ? 'left-40' : 'left-32'
 							}`}>
 							<p className='font-popins text-[red]'>Adult</p>
