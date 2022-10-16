@@ -29,7 +29,7 @@ const Card: React.FC<Props> = ({ cover, name, rate, id, mediaType, adult }) => {
 				className={`flex flex-col bg-primary-800/40  w-[250px] h-[400px] p-[8px] rounded-md cursor-pointer group m-4`}>
 				<div className={`w-full h-[330px] rounded-md overflow-hidden relative`}>
 					<Image
-						className='group-hover:scale-105 transition ease-in-out'
+						className='group-hover:scale-105 transition ease-in-out duration-500'
 						height={450}
 						width={300}
 						src={cover}
