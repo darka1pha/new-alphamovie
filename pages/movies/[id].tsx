@@ -3,7 +3,7 @@ import { useGetMovieDetails } from '@apis/hooks/movies'
 import { MovieDetails } from '@apis/interfaces'
 import { MOVIE_DETAILS, TRENDINGS } from '@apis/urls'
 import { Cover, Details } from '@components'
-import { AxiosResponse } from 'axios'
+import { AxiosError, AxiosResponse } from 'axios'
 import CoverSkeleton from 'components/Cover/Skeleton'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
@@ -23,12 +23,21 @@ const getMovies = async (): Promise<AxiosResponse<MovieResults>> =>
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const { id } = params as IParams
-	let data = null
 	try {
-		data = await Axios.get(MOVIE_DETAILS(id))
+		await Axios.get(MOVIE_DETAILS(id))
 	} catch (error) {
-		return {
-			notFound: true,
+		const err = error as AxiosError
+		if (err.response?.status === 404)
+			return {
+				notFound: true,
+			}
+		else {
+			return {
+				redirect: {
+					statusCode: 308,
+					destination: '/500',
+				},
+			}
 		}
 	}
 	return {

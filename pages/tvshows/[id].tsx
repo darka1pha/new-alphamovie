@@ -3,7 +3,7 @@ import { useGetTvDetails } from '@apis/hooks/tvshows'
 import { TvDetails } from '@apis/interfaces'
 import { TRENDINGS, TV_DETAILS } from '@apis/urls'
 import { Cover, Details } from '@components'
-import { AxiosResponse } from 'axios'
+import { AxiosError, AxiosResponse } from 'axios'
 import CoverSkeleton from 'components/Cover/Skeleton'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
@@ -23,12 +23,21 @@ const getTvs = async (): Promise<AxiosResponse<TvResults>> =>
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const { id } = params as IParams
-	let data = null
 	try {
-		data = await Axios.get(TV_DETAILS(id))
+		await Axios.get(TV_DETAILS(id))
 	} catch (error) {
-		return {
-			notFound: true,
+		const err = error as AxiosError
+		if (err.response?.status === 404)
+			return {
+				notFound: true,
+			}
+		else {
+			return {
+				redirect: {
+					statusCode: 308,
+					destination: '/500',
+				},
+			}
 		}
 	}
 	return {
