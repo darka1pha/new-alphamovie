@@ -31,7 +31,6 @@ const CardsContainer: React.FC<Props> = ({
 		onReachCondition: hasNextPage,
 		refreshDependecies: [data],
 	})
-	console.log(data)
 	return (
 		<div ref={containerRef} className='flex justify-center'>
 			<div className='w-full flex flex-wrap mt-12 justify-center'>

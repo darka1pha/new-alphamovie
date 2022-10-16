@@ -30,7 +30,6 @@ const Tab = ({
 	useEffect(() => {
 		function setTabPosition() {
 			const currentTab = tabsRef.current[activeTabIndex]
-			console.log(currentTab?.offsetLeft, currentTab?.clientWidth)
 			setTabIndicatorLeft(currentTab?.offsetLeft ?? 0)
 			setTabIndicatorWidth(currentTab?.clientWidth ?? 0)
 		}
