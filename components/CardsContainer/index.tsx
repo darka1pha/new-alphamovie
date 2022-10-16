@@ -29,40 +29,49 @@ const CardsContainer: React.FC<Props> = ({
 		onReachCondition: hasNextPage,
 		refreshDependecies: [data],
 	})
+	console.log(data)
 	return (
 		<div ref={containerRef} className='flex justify-center'>
 			<div className='w-full flex flex-wrap mt-12 justify-center'>
-				{loading
-					? Array.from(Array(10).keys()).map((i) => <Skeleton key={i} />)
-					: data?.pages.map((page, key) => (
-							<React.Fragment key={key}>
-								{page.results.map(
-									(
-										{
-											poster_path,
-											original_title,
-											name,
-											vote_average,
-											media_type,
-											id,
-											adult,
-										},
-										key
-									) =>
-										media_type !== 'person' && (
-											<Card
-												key={key}
-												name={name ?? original_title}
-												cover={POSTER_URL({ quality: 'w300' }) + poster_path}
-												rate={vote_average}
-												id={id}
-												mediaType={media_type}
-												adult={adult}
-											/>
-										)
-								)}
-							</React.Fragment>
-					  ))}
+				{loading || !data ? (
+					Array.from(Array(10).keys()).map((i) => <Skeleton key={i} />)
+				) : data?.pages[0].results.length > 0 ? (
+					data?.pages.map((page, key) => (
+						<React.Fragment key={key}>
+							{page.results.map(
+								(
+									{
+										poster_path,
+										original_title,
+										name,
+										vote_average,
+										media_type,
+										id,
+										adult,
+									},
+									key
+								) =>
+									media_type !== 'person' && (
+										<Card
+											key={key}
+											name={name ?? original_title}
+											cover={POSTER_URL({ quality: 'w300' }) + poster_path}
+											rate={vote_average}
+											id={id}
+											mediaType={media_type}
+											adult={adult}
+										/>
+									)
+							)}
+						</React.Fragment>
+					))
+				) : (
+					<div>
+						<p className='text-primary-400 font-popins font-semibold text-xl'>
+							There is no result for your search terms &#128546;
+						</p>
+					</div>
+				)}
 				{fetchingNextPage && <Loading />}
 			</div>
 		</div>
