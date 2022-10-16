@@ -15,4 +15,5 @@
 
 * {
 	font-display: optional;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
