@@ -55,6 +55,7 @@ const Home = () => {
 			/>
 			<Tab onChange={onTabChange} />
 			<CardsContainer
+				activeTab={activeTab}
 				fetchNextPage={searchData ? fetchNextSearch : fetchNextPage}
 				fetchingNextPage={searchData ? fetchingSearch : isFetchingNextPage}
 				hasNextPage={searchData ? hasNextSearch : hasNextPage}

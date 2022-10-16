@@ -13,6 +13,7 @@ interface Props {
 	fetchNextPage: () => void
 	hasNextPage: boolean | undefined
 	fetchingNextPage: boolean
+	activeTab?: 'all' | 'tv' | 'movie'
 }
 
 const CardsContainer: React.FC<Props> = ({
@@ -21,6 +22,7 @@ const CardsContainer: React.FC<Props> = ({
 	fetchNextPage,
 	hasNextPage,
 	fetchingNextPage,
+	activeTab,
 }) => {
 	const containerRef = useRef(null)
 	const reachBottom = useReachBottom({
@@ -58,7 +60,7 @@ const CardsContainer: React.FC<Props> = ({
 											cover={POSTER_URL({ quality: 'w300' }) + poster_path}
 											rate={vote_average}
 											id={id}
-											mediaType={media_type}
+											mediaType={media_type ?? activeTab}
 											adult={adult}
 										/>
 									)

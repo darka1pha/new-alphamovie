@@ -1,6 +1,6 @@
 import Axios from '@apis/axios'
 import { IPaginatedData, ListResults, TvDetails } from '@apis/interfaces'
-import { MULTI_SEARCH, POPULAR_TVS, TV_DETAILS } from '@apis/urls'
+import { POPULAR_TVS, TV_DETAILS, TV_SEARCH } from '@apis/urls'
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 
 export const useGetTvDetails = ({
@@ -31,7 +31,7 @@ export const useGetTvSearch = ({ query }: { query: string }) =>
 	useInfiniteQuery(
 		['tvsearch', query],
 		async ({ pageParam = 1 }): Promise<IPaginatedData<ListResults>> => {
-			const { data } = await Axios.get(MULTI_SEARCH(query, pageParam))
+			const { data } = await Axios.get(TV_SEARCH(query, pageParam))
 			return data
 		},
 		{
