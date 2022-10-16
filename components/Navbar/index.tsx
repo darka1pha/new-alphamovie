@@ -3,16 +3,11 @@ import Link from 'next/link'
 
 const Navbar = () => {
 	return (
-		<div className='flex px-16 sm:px-28 justify-between align-middle h-[80px] w-full bg-[#12182980]'>
+		<div className='fixed backdrop-blur-lg z-10  flex px-16 sm:px-28 justify-between align-middle h-[80px] w-full bg-[#12182980]'>
 			<Link href='/'>
 				<a aria-label='home-page' className='flex'>
 					<div className='flex align-middle cursor-pointer'>
-						<Image
-							src='/assets/logo.svg'
-							alt='logo'
-							height={36}
-							width={36}
-						/>
+						<Image src='/assets/logo.svg' alt='logo' height={36} width={36} />
 					</div>
 				</a>
 			</Link>
