@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 
 interface Props {
 	title: string
@@ -19,6 +19,10 @@ const Title: React.FC<Props> = ({
 	onClear,
 	searching,
 }) => {
+	const inputRef = useRef<null | HTMLInputElement>(null)
+
+	const [isFocused, setIsFocused] = useState(false)
+
 	return (
 		<div>
 			{homeStyle ? (
@@ -43,33 +47,138 @@ const Title: React.FC<Props> = ({
 					</h1>
 				</>
 			)}
-			<div className='max-w-[344px] w-full relative mt-4'>
+			<div
+				onClick={() => {
+					inputRef.current?.focus()
+					setIsFocused(true)
+				}}
+				style={isFocused ? { borderColor: '#483bc3' } : undefined}
+				className='max-w-[344px] group h-[70px] w-full relative mt-4 rounded-lg border-[#323b54] border-solid hover:border-primary-600 focus:border-primary-600 border-2 transition ease-in-out duration-300'>
+				<p
+					style={
+						isFocused
+							? {
+									fontSize: '12px',
+									top: '15px',
+									color: '#483bc3',
+									fontWeight: 'bold',
+							  }
+							: search
+							? { fontSize: '12px', top: '15px', fontWeight: 'bold' }
+							: undefined
+					}
+					className='text-[#323b54] group-hover:text-primary-600 absolute group-hover:text-pr left-12 my-auto top-[50%] translate-y-[-50%] flex items-center transition-all ease-in-out duration-300'>
+					Search Movie,TV Shows and ....
+				</p>
 				<input
+					ref={inputRef}
+					onBlur={() => setIsFocused(false)}
 					onChange={onSearchChanged}
 					value={search}
 					type='text'
-					placeholder='Search Movie,TV Shows and ....'
-					className='w-full py-[12px] pr-[16px] pl-[56px] rounded-lg bg-[#00000020] border-[#323b54] border-solid placeholder-[#323b54] focus:outline-none caret-primary-200 text-primary-300 focus:border-primary-600 border-2 transition ease-in-out'
+					className='w-full py-[12px] bg-[transparent] pr-[16px] pl-[56px] absolute bottom-0 focus:outline-none caret-primary-600 text-primary-300 '
 				/>
-				<img
+				<div className='absolute top-0 bottom-0 my-auto left-4 flex items-center'>
+					<svg
+						width='24'
+						height='24'
+						viewBox='0 0 24 24'
+						fill='none'
+						xmlns='http://www.w3.org/2000/svg'>
+						<path
+							style={
+								isFocused
+									? {
+											stroke: '#483bc3',
+									  }
+									: undefined
+							}
+							d='M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z'
+							stroke='#475069'
+							className='group-hover:stroke-primary-600 transition-all ease-in-out duration-300'
+							strokeWidth='1.5'
+							strokeLinecap='round'
+							strokeLinejoin='round'
+						/>
+						<path
+							d='M22 22L20 20'
+							style={
+								isFocused
+									? {
+											stroke: '#483bc3',
+									  }
+									: undefined
+							}
+							stroke='#475069'
+							className='group-hover:stroke-primary-600 transition-all ease-in-out duration-300'
+							strokeWidth='1.5'
+							strokeLinecap='round'
+							strokeLinejoin='round'
+						/>
+					</svg>
+				</div>
+				{/* <img
 					alt='search-icon'
 					className='absolute top-0 bottom-0 my-auto left-4'
 					src='/icons/Search.svg'
+					style={{}}
 					height={24}
 					width={24}
-				/>
+				/> */}
 				{searching && (
 					<div
 						className='absolute top-0 bottom-0 my-auto flex items-center right-2'
 						aria-label='Loading...'
 						role='status'>
-						<svg className='h-6 w-6 animate-spin' viewBox='3 3 18 18'>
-							<path
-								className=' fill-primary-500'
-								d='M12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5ZM3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z'></path>
-							<path
-								className='fill-primary-200'
-								d='M16.9497 7.05015C14.2161 4.31648 9.78392 4.31648 7.05025 7.05015C6.65973 7.44067 6.02656 7.44067 5.63604 7.05015C5.24551 6.65962 5.24551 6.02646 5.63604 5.63593C9.15076 2.12121 14.8492 2.12121 18.364 5.63593C18.7545 6.02646 18.7545 6.65962 18.364 7.05015C17.9734 7.44067 17.3403 7.44067 16.9497 7.05015Z'></path>
+						<svg
+							width='38'
+							height='38'
+							viewBox='0 0 38 38'
+							xmlns='http://www.w3.org/2000/svg'>
+							<defs>
+								<linearGradient
+									x1='8.042%'
+									y1='0%'
+									x2='65.682%'
+									y2='23.865%'
+									id='a'>
+									<stop stopColor='#483bc3' stopOpacity='0' offset='0%' />
+									<stop
+										stopColor='#483bc3'
+										stopOpacity='.631'
+										offset='63.146%'
+									/>
+									<stop stopColor='#483bc3' offset='100%' />
+								</linearGradient>
+							</defs>
+							<g fill='none' fill-rule='evenodd'>
+								<g transform='translate(1 1)'>
+									<path
+										d='M36 18c0-9.94-8.06-18-18-18'
+										id='Oval-2'
+										stroke='url(#a)'
+										stroke-width='2'>
+										<animateTransform
+											attributeName='transform'
+											type='rotate'
+											from='0 18 18'
+											to='360 18 18'
+											dur='0.9s'
+											repeatCount='indefinite'
+										/>
+									</path>
+									<circle fill='#483bc3' cx='36' cy='18' r='1'>
+										<animateTransform
+											attributeName='transform'
+											type='rotate'
+											from='0 18 18'
+											to='360 18 18'
+											dur='0.9s'
+											repeatCount='indefinite'
+										/>
+									</circle>
+								</g>
+							</g>
 						</svg>
 					</div>
 				)}
