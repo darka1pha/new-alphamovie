@@ -1,5 +1,5 @@
 import { useGetMovies, useGetMovieSearch } from '@apis/hooks/movies'
-import { CardsContainer, Menu, Title } from '@components'
+import { CardsContainer, Title } from '@components'
 import useDebounce from '@hooks/useDebounce'
 import Head from 'next/head'
 import { useState } from 'react'

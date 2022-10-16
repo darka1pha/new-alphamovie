@@ -2,7 +2,7 @@ import { CardsContainer, Tab, Title } from '@components'
 import useDebounce from '@hooks/useDebounce'
 import { useGetMultiSearch, useGetTrendings } from 'API/hooks/homePage'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState<'all' | 'tv' | 'movie'>('all')
