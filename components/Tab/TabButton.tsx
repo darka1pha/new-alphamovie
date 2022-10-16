@@ -12,7 +12,7 @@ const TabButton = forwardRef<HTMLButtonElement | null, TabButtonProps>(
 			<button
 				ref={ref}
 				onClick={onClick}
-				className={`min-w-[85px] z-[1] p-2 bg-none font-popins text-primary-50 font-semibold text-xs rounded-md transition ease-in-out hover:scale-105`}>
+				className={`flex-1 z-[1] p-2 bg-none font-popins text-primary-50 font-semibold text-xs rounded-md transition ease-in-out hover:scale-105`}>
 				{name}
 			</button>
 		)
