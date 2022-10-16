@@ -49,7 +49,7 @@ const Title: React.FC<Props> = ({
 					value={search}
 					type='text'
 					placeholder='Search Movie,TV Shows and ....'
-					className='w-full py-[12px] pr-[16px] pl-[56px] rounded-lg bg-[#00000020] border-[#323b54] border-solid border-[1px] placeholder-[#323b54] focus:outline-none caret-primary-200 text-primary-300 focus:border-primary-300 transition ease-in-out'
+					className='w-full py-[12px] pr-[16px] pl-[56px] rounded-lg bg-[#00000020] border-[#323b54] border-solid placeholder-[#323b54] focus:outline-none caret-primary-200 text-primary-300 focus:border-primary-600 border-2 transition ease-in-out'
 				/>
 				<img
 					alt='search-icon'
@@ -90,9 +90,9 @@ const Title: React.FC<Props> = ({
 								viewBox='0 0 24 24'
 								aria-hidden='true'>
 								<path
-									stroke-linecap='round'
-									stroke-linejoin='round'
-									stroke-width='2'
+									strokeLinecap='round'
+									strokeLinejoin='round'
+									strokeWidth='2'
 									d='M6 18L18 6M6 6l12 12'
 								/>
 							</svg>
