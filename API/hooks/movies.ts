@@ -1,6 +1,11 @@
 import Axios from '@apis/axios'
 import { IPaginatedData, ListResults, MovieDetails } from '@apis/interfaces'
-import { MOVIE_DETAILS, MOVIE_SEARCH, POPULAR_MOVIES } from '@apis/urls'
+import {
+	MOVIE_DETAILS,
+	MOVIE_SEARCH,
+	MOVIE_SIMILARS,
+	POPULAR_MOVIES,
+} from '@apis/urls'
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 
 export const useGetMovieDetails = ({
@@ -8,16 +13,16 @@ export const useGetMovieDetails = ({
 }: {
 	id: string | string[] | undefined
 }) =>
-	useQuery([`movie-${id}`], async (): Promise<MovieDetails> => {
+	useQuery<MovieDetails>([`movie-${id}`], async () => {
 		const { data } = await Axios.get(MOVIE_DETAILS(id))
 		return data
 	})
 
 export const useGetMovies = () =>
-	useInfiniteQuery(
+	useInfiniteQuery<IPaginatedData<ListResults>>(
 		['movies'],
-		async ({ pageParam = 1 }): Promise<IPaginatedData<ListResults>> => {
-			const { data } = await Axios.get(POPULAR_MOVIES({  pageParam }))
+		async ({ pageParam = 1 }) => {
+			const { data } = await Axios.get(POPULAR_MOVIES({ pageParam }))
 			return data
 		},
 		{
@@ -28,9 +33,9 @@ export const useGetMovies = () =>
 	)
 
 export const useGetMovieSearch = ({ query }: { query: string }) =>
-	useInfiniteQuery(
+	useInfiniteQuery<IPaginatedData<ListResults>>(
 		['movie-search', query],
-		async ({ pageParam = 1 }): Promise<IPaginatedData<ListResults>> => {
+		async ({ pageParam = 1 }) => {
 			const { data } = await Axios.get(MOVIE_SEARCH(query, pageParam))
 			return data
 		},
@@ -41,3 +46,9 @@ export const useGetMovieSearch = ({ query }: { query: string }) =>
 			},
 		}
 	)
+
+export const useGetSimilarMovies = (id: string | string[] | undefined) =>
+	useQuery<IPaginatedData<ListResults>>([`similar-${id}`], async () => {
+		const { data } = await Axios.get(MOVIE_SIMILARS(id))
+		return data
+	})

@@ -26,17 +26,11 @@ const urlGenerator = (url: string, page?: number | undefined) =>
 export const TRENDINGS = ({ media_type = 'all', pageParam }: TrendingsParams) =>
 	`${urlGenerator(`/trending/${media_type}/day`, pageParam)}`
 
-export const POPULAR_MOVIES = ({
-	pageParam,
-}: {
-	pageParam: number
-}) => `${urlGenerator(`/movie/popular`, pageParam)}`
+export const POPULAR_MOVIES = ({ pageParam }: { pageParam: number }) =>
+	`${urlGenerator(`/movie/popular`, pageParam)}`
 
-export const POPULAR_TVS = ({
-	pageParam,
-}: {
-	pageParam: number
-}) => `${urlGenerator(`/tv/popular`, pageParam)}`
+export const POPULAR_TVS = ({ pageParam }: { pageParam: number }) =>
+	`${urlGenerator(`/tv/popular`, pageParam)}`
 
 export const MOVIE_DETAILS = (id: string | string[] | undefined) =>
 	urlGenerator(`/movie/${id}`)
@@ -52,3 +46,9 @@ export const MOVIE_SEARCH = (query: string, pageParam: number) =>
 
 export const TV_SEARCH = (query: string, pageParam: number) =>
 	`${urlGenerator('/search/tv', pageParam)}&query=${query}`
+
+export const TV_SIMILARS = (id: string | string[] | undefined) =>
+	urlGenerator(`/tv/${id}/similar`)
+
+	export const MOVIE_SIMILARS = (id: string | string[] | undefined) =>
+	urlGenerator(`/movie/${id}/similar`)

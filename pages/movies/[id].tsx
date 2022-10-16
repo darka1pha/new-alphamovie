@@ -1,8 +1,9 @@
 import Axios from '@apis/axios'
-import { useGetMovieDetails } from '@apis/hooks/movies'
+import { useGetMovieDetails, useGetSimilarMovies } from '@apis/hooks/movies'
+import { useGetSimilarTv } from '@apis/hooks/tvshows'
 import { MovieDetails } from '@apis/interfaces'
 import { MOVIE_DETAILS, TRENDINGS } from '@apis/urls'
-import { Cover, Details } from '@components'
+import { Cover, Details, SimilarItems } from '@components'
 import { AxiosError, AxiosResponse } from 'axios'
 import CoverSkeleton from 'components/Cover/Skeleton'
 import { GetStaticProps } from 'next'
@@ -64,6 +65,9 @@ export async function getStaticPaths() {
 const SingleMovie = () => {
 	const router = useRouter()
 	const { data, isLoading } = useGetMovieDetails({ id: router.query.id })
+	const { data: similars, isLoading: similarsLoading } = useGetSimilarMovies(
+		router.query.id
+	)
 	return (
 		<div>
 			<Head>
@@ -103,6 +107,7 @@ const SingleMovie = () => {
 						posterImage={data.poster_path}
 						genres={data.genres}
 					/>
+					<SimilarItems type='movie' data={similars} loading={similarsLoading} />
 				</>
 			)}
 		</div>

@@ -1,8 +1,8 @@
 import Axios from '@apis/axios'
-import { useGetTvDetails } from '@apis/hooks/tvshows'
+import { useGetSimilarTv, useGetTvDetails } from '@apis/hooks/tvshows'
 import { TvDetails } from '@apis/interfaces'
 import { TRENDINGS, TV_DETAILS } from '@apis/urls'
-import { Cover, Details } from '@components'
+import { Cover, Details, SimilarItems } from '@components'
 import { AxiosError, AxiosResponse } from 'axios'
 import CoverSkeleton from 'components/Cover/Skeleton'
 import { GetStaticProps } from 'next'
@@ -64,6 +64,9 @@ export async function getStaticPaths() {
 const Single = () => {
 	const router = useRouter()
 	const { data, isLoading } = useGetTvDetails({ id: router.query.id })
+	const { data: similars, isLoading: similarsLoading } = useGetSimilarTv(
+		router.query.id
+	)
 	return (
 		<div>
 			<Head>
@@ -105,6 +108,7 @@ const Single = () => {
 						episodesNumber={data.number_of_episodes}
 						lastAirDate={data.last_air_date}
 					/>
+					<SimilarItems type='tv' data={similars} loading={similarsLoading} />
 				</>
 			)}
 		</div>
