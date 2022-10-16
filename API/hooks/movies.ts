@@ -1,6 +1,6 @@
 import Axios from '@apis/axios'
 import { IPaginatedData, ListResults, MovieDetails } from '@apis/interfaces'
-import { MOVIE_DETAILS, MOVIE_SEARCH } from '@apis/urls'
+import { MOVIE_DETAILS, MOVIE_SEARCH, POPULAR_MOVIES } from '@apis/urls'
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 
 export const useGetMovieDetails = ({
@@ -12,6 +12,20 @@ export const useGetMovieDetails = ({
 		const { data } = await Axios.get(MOVIE_DETAILS(id))
 		return data
 	})
+
+export const useGetMovies = () =>
+	useInfiniteQuery(
+		['movies'],
+		async ({ pageParam = 1 }): Promise<IPaginatedData<ListResults>> => {
+			const { data } = await Axios.get(POPULAR_MOVIES({  pageParam }))
+			return data
+		},
+		{
+			getNextPageParam: (lastPage, pages) => {
+				return lastPage.page + 1
+			},
+		}
+	)
 
 export const useGetMovieSearch = ({ query }: { query: string }) =>
 	useInfiniteQuery(

@@ -1,6 +1,6 @@
 import Axios from 'API/axios'
 import { IPaginatedData, ListResults, TrendingsParams } from 'API/interfaces'
-import { MULTI_SEARCH, TRENDINGS } from 'API/urls'
+import { MOVIE_SEARCH, MULTI_SEARCH, TRENDINGS, TV_SEARCH } from 'API/urls'
 import { useInfiniteQuery } from '@tanstack/react-query'
 
 export const useGetTrendings = ({ media_type }: TrendingsParams) =>
@@ -17,11 +17,23 @@ export const useGetTrendings = ({ media_type }: TrendingsParams) =>
 		}
 	)
 
-export const useGetMultiSearch = ({ query }: { query: string }) =>
+export const useGetMultiSearch = ({
+	query,
+	type,
+}: {
+	query: string
+	type: 'all' | 'movie' | 'tv'
+}) =>
 	useInfiniteQuery(
-		['search', query],
+		['search', query, type],
 		async ({ pageParam = 1 }): Promise<IPaginatedData<ListResults>> => {
-			const { data } = await Axios.get(MULTI_SEARCH(query, pageParam))
+			const { data } = await Axios.get(
+				type === 'all'
+					? MULTI_SEARCH(query, pageParam)
+					: type === 'movie'
+					? MOVIE_SEARCH(query, pageParam)
+					: TV_SEARCH(query, pageParam)
+			)
 			return data
 		},
 		{

@@ -26,6 +26,18 @@ const urlGenerator = (url: string, page?: number | undefined) =>
 export const TRENDINGS = ({ media_type = 'all', pageParam }: TrendingsParams) =>
 	`${urlGenerator(`/trending/${media_type}/day`, pageParam)}`
 
+export const POPULAR_MOVIES = ({
+	pageParam,
+}: {
+	pageParam: number
+}) => `${urlGenerator(`/movie/popular`, pageParam)}`
+
+export const POPULAR_TVS = ({
+	pageParam,
+}: {
+	pageParam: number
+}) => `${urlGenerator(`/tv/popular`, pageParam)}`
+
 export const MOVIE_DETAILS = (id: string | string[] | undefined) =>
 	urlGenerator(`/movie/${id}`)
 
