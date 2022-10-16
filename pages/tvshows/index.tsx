@@ -1,13 +1,12 @@
-import { useGetTvSearch } from '@apis/hooks/tvshows'
+import { useGetTvs, useGetTvSearch } from '@apis/hooks/tvshows'
 import { CardsContainer, Menu, Title } from '@components'
 import useDebounce from '@hooks/useDebounce'
-import { useGetTrendings } from 'API/hooks/homePage'
 import Head from 'next/head'
 import { useState } from 'react'
 
 const Tvshows = () => {
 	const { data, isLoading, fetchNextPage, isFetchingNextPage, hasNextPage } =
-		useGetTrendings({ media_type: 'tv' })
+		useGetTvs()
 
 	const [search, setSearch] = useState('')
 	const debouncedSearchValue = useDebounce(search, 1000)
@@ -46,7 +45,6 @@ const Tvshows = () => {
 				search={search}
 				title='Tv Shows'
 			/>
-			<Menu />
 			<CardsContainer
 				fetchNextPage={searchData ? fetchNextSearch : fetchNextPage}
 				fetchingNextPage={searchData ? fetchingSearch : isFetchingNextPage}

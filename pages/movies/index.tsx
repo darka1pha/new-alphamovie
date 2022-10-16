@@ -1,13 +1,12 @@
-import { useGetMovieSearch } from '@apis/hooks/movies'
+import { useGetMovies, useGetMovieSearch } from '@apis/hooks/movies'
 import { CardsContainer, Menu, Title } from '@components'
 import useDebounce from '@hooks/useDebounce'
-import { useGetTrendings } from 'API/hooks/homePage'
 import Head from 'next/head'
 import { useState } from 'react'
 
 const Movies = () => {
 	const { data, isLoading, fetchNextPage, isFetchingNextPage, hasNextPage } =
-		useGetTrendings({ media_type: 'movie' })
+		useGetMovies()
 
 	const [search, setSearch] = useState('')
 	const debouncedSearchValue = useDebounce(search, 1000)
@@ -46,7 +45,6 @@ const Movies = () => {
 				search={search}
 				title='Movies'
 			/>
-			<Menu />
 			<CardsContainer
 				fetchNextPage={searchData ? fetchNextSearch : fetchNextPage}
 				fetchingNextPage={searchData ? fetchingSearch : isFetchingNextPage}

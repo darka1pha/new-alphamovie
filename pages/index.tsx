@@ -5,8 +5,10 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 
 const Home = () => {
+	const [activeTab, setActiveTab] = useState<'all' | 'tv' | 'movie'>('all')
+
 	const { data, isLoading, fetchNextPage, isFetchingNextPage, hasNextPage } =
-		useGetTrendings({ media_type: 'all' })
+		useGetTrendings({ media_type: activeTab })
 
 	const [search, setSearch] = useState('')
 	const debouncedSearchValue = useDebounce(search, 1000)
@@ -17,7 +19,11 @@ const Home = () => {
 		fetchNextPage: fetchNextSearch,
 		isFetchingNextPage: fetchingSearch,
 		hasNextPage: hasNextSearch,
-	} = useGetMultiSearch({ query: debouncedSearchValue })
+	} = useGetMultiSearch({ query: debouncedSearchValue, type: activeTab })
+
+	const onTabChange = (value: 'all' | 'tv' | 'movie') => {
+		setActiveTab(value)
+	}
 
 	return (
 		<div className='flex flex-col flex-wrap'>
@@ -47,7 +53,7 @@ const Home = () => {
 				title='AlphaMovie'
 				subtitle='List of Movies and TV Shows, Explore and Pick One to Watch.'
 			/>
-			<Menu />
+			<Menu onChange={onTabChange} activeTab={activeTab} />
 			<CardsContainer
 				fetchNextPage={searchData ? fetchNextSearch : fetchNextPage}
 				fetchingNextPage={searchData ? fetchingSearch : isFetchingNextPage}
