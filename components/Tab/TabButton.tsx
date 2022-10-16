@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MenuButton: React.FC<{ name: string; onClick: any }> = ({
+const TabButton: React.FC<{ name: string; onClick: any }> = ({
 	name,
 	onClick,
 }) => {
@@ -13,4 +13,4 @@ const MenuButton: React.FC<{ name: string; onClick: any }> = ({
 	)
 }
 
-export default MenuButton
+export default TabButton

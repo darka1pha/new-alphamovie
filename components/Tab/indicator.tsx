@@ -1,5 +1,5 @@
 const Indicator = ({ active }: { active: 'all' | 'tv' | 'movie' }) => {
-	const left = active === 'all' ? '10px' : active === 'movie' ? '138px' : '266px'
+	const left = active === 'all' ? '10px' : active === 'movie' ? '128px' : '247px'
 	return (
 		<div
 			style={{

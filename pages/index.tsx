@@ -1,4 +1,4 @@
-import { CardsContainer, Menu, Title } from '@components'
+import { CardsContainer, Tab, Title } from '@components'
 import useDebounce from '@hooks/useDebounce'
 import { useGetMultiSearch, useGetTrendings } from 'API/hooks/homePage'
 import Head from 'next/head'
@@ -53,7 +53,7 @@ const Home = () => {
 				title='AlphaMovie'
 				subtitle='List of Movies and TV Shows, Explore and Pick One to Watch.'
 			/>
-			<Menu onChange={onTabChange} activeTab={activeTab} />
+			<Tab onChange={onTabChange} activeTab={activeTab} />
 			<CardsContainer
 				fetchNextPage={searchData ? fetchNextSearch : fetchNextPage}
 				fetchingNextPage={searchData ? fetchingSearch : isFetchingNextPage}
