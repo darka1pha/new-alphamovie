@@ -53,7 +53,7 @@ const Home = () => {
 				title='AlphaMovie'
 				subtitle='List of Movies and TV Shows, Explore and Pick One to Watch.'
 			/>
-			<Tab onChange={onTabChange} activeTab={activeTab} />
+			<Tab onChange={onTabChange} />
 			<CardsContainer
 				fetchNextPage={searchData ? fetchNextSearch : fetchNextPage}
 				fetchingNextPage={searchData ? fetchingSearch : isFetchingNextPage}
